@@ -1,0 +1,51 @@
+{% extends 'training/base.html' %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'food/style.css' %}" />
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+  integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  crossorigin="anonymous"
+/>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+
+  .coaches-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .coach-card {
+    width: 45%;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .coach-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+  }
+</style>
+{% endblock %} {% block body %}
+<h1 align="center">Coaches</h1>
+<br />
+
+<div class="container">
+  <div class="coaches-container">
+    {% for coach in coaches %}
+    <div class="coach-card">
+      <h3>{{ coach.name }}</h3>
+      <p>{{ coach.description }}</p>
+      <img src="{{ coach.image.url }}" alt="{{ coach.name }}" />
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}
